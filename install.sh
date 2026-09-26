@@ -31,7 +31,11 @@ done
 # Hyprland 0.55+ reads ~/.config/hypr/hyprland.lua (hyprlang .conf is legacy)
 mkdir -p "$CONFDIR/hypr"
 ln -sfn "$DOTDIR/hyprland/hyprland.lua" "$CONFDIR/hypr/hyprland.lua"
+ln -sfn "$DOTDIR/hyprland/hyprlock.conf" "$CONFDIR/hypr/hyprlock.conf"
+ln -sfn "$DOTDIR/hyprland/scripts" "$CONFDIR/hypr/scripts"
 echo "[LINK] $CONFDIR/hypr/hyprland.lua -> $DOTDIR/hyprland/hyprland.lua"
+echo "[LINK] $CONFDIR/hypr/hyprlock.conf -> $DOTDIR/hyprland/hyprlock.conf"
+echo "[LINK] $CONFDIR/hypr/scripts -> $DOTDIR/hyprland/scripts"
 
 echo ""
 echo "Done. Symlinks installed from $DOTDIR to $CONFDIR"
