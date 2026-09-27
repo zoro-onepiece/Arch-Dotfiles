@@ -31,6 +31,8 @@ active-color = "#f5c2e7"
 occupied-color = "#cba6f7"
 empty-color = "#7f849c"
 container-bg-color = "#313244"
+app-icons-show = true
+display-mode = "label"
 
 [modules.clock]
 format = "%H:%M"

@@ -28,7 +28,7 @@ local menu        = "rofi -show drun"
 hl.on("hyprland.start", function()
     hl.exec_cmd("wayle shell")
     hl.exec_cmd("swww-daemon")
-    hl.exec_cmd("~/.config/hypr/scripts/battery-notify.sh &")
+    hl.exec_cmd("bash -c '~/.config/hypr/scripts/battery-notify.sh &'")
     hl.exec_cmd("/usr/lib/polkit-kde-authentication-agent-1")
     hl.exec_cmd("wl-paste --type text --watch cliphist store")
     hl.exec_cmd("wl-paste --type image --watch cliphist store")
@@ -157,6 +157,15 @@ hl.bind(mainMod .. " + left",  hl.dsp.focus({ direction = "left" }))
 hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }))
 hl.bind(mainMod .. " + up",    hl.dsp.focus({ direction = "up" }))
 hl.bind(mainMod .. " + down",  hl.dsp.focus({ direction = "down" }))
+
+-- Swap windows
+hl.bind(mainMod .. " + SHIFT + left",  hl.dsp.exec_cmd("hyprctl dispatch swapwindow l"))
+hl.bind(mainMod .. " + SHIFT + right", hl.dsp.exec_cmd("hyprctl dispatch swapwindow r"))
+hl.bind(mainMod .. " + SHIFT + up",    hl.dsp.exec_cmd("hyprctl dispatch swapwindow u"))
+hl.bind(mainMod .. " + SHIFT + down",  hl.dsp.exec_cmd("hyprctl dispatch swapwindow d"))
+
+-- Shortcuts Menu
+hl.bind(mainMod .. " + slash", hl.dsp.exec_cmd("~/.config/hypr/scripts/show-shortcuts.sh"))
 
 -- Workspaces (1-9)
 for i = 1, 9 do
