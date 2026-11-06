@@ -119,11 +119,20 @@ hl.config({
 ---- GESTURES ----
 ------------------
 
--- 3-finger horizontal swipe = workspace switch
+-- 3-finger horizontal swipe = scroll across workspaces
 hl.gesture({
     fingers   = 3,
     direction = "horizontal",
     action    = "workspace",
+})
+
+-- 3-finger swipe up = window overview across all workspaces
+hl.gesture({
+    fingers   = 3,
+    direction = "up",
+    action    = function()
+        hl.dispatch(hl.dsp.exec_cmd("rofi -show window"))
+    end,
 })
 
 ---------------------
@@ -144,13 +153,16 @@ hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + V", hl.dsp.exec_cmd("sh -c 'cliphist list | wofi --dmenu | cliphist decode | wl-copy'"))
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + Space", hl.dsp.exec_cmd(menu))
+hl.bind(mainMod .. " + Tab", hl.dsp.exec_cmd("rofi -show window"))
+hl.bind(mainMod .. " + F11", hl.dsp.exec_cmd("rofi -show window"))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen())
 hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("hyprlock"))
 
 -- Region screenshot to clipboard (requires grim, slurp, wl-clihlpboard)
-hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd('sh -c \'grim -g "$(slurp)" - | wl-copy\''))
+hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd("bash -c '~/.config/hyprland/scripts/screenshot.sh'"))
+hl.bind(mainMod .. " + F10", hl.dsp.exec_cmd("bash -c '~/.config/hyprland/scripts/screenshot.sh'"))
 
 -- Navigation
 hl.bind(mainMod .. " + left",  hl.dsp.focus({ direction = "left" }))

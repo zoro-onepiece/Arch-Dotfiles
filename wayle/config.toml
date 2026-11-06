@@ -6,13 +6,19 @@ location = "top"
 bg = "bg-surface"
 background-opacity = 88
 rounding = "sm"
-button-rounding = "md"
+button-rounding = "full"
+button-icon-size = 0.8
+button-icon-padding = 0.65
+button-label-size = 0.8
+button-label-padding = 0.65
+button-gap = 0.5
+module-gap = 0.35
 
 [[bar.layout]]
 monitor = "*"
 left = ["hyprland-workspaces"]
 center = ["clock"]
-right = ["cpu", "ram", "network", "battery", "hyprsunset"]
+right = ["cpu", "ram", "network", "bluetooth", "battery", "hyprsunset"]
 
 [styling.palette]
 bg = "#181825"
@@ -55,6 +61,12 @@ icon-bg-color = "#f9e2af"
 label-color = "#f9e2af"
 button-bg-color = "#313244"
 right-click = "kitty -e nmtui"
+
+[modules.bluetooth]
+icon-bg-color = "#89b4fa"
+label-color = "#89b4fa"
+button-bg-color = "#313244"
+right-click = "kitty -e bluetoothctl"
 
 [modules.battery]
 icon-bg-color = "#cba6f7"

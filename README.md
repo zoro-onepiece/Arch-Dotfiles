@@ -15,10 +15,11 @@ Personal Hyprland (Wayland) setup for a Lenovo ThinkBook 14 G6 IRL running Arch 
 ## Features
 
 - **Function keys**: volume (wpctl), brightness (brightnessctl), media (playerctl)
+- **Screenshots**: F10 - region screenshot (copies to clipboard + cliphist); F11 - show all windows overview
 - **Night light**: hyprsunset toggle button in the bar (4000K warm), left-click on/off, right-click for nmtui-style networking lives on the network module
 - **WiFi module**: NetworkManager dropdown on left-click, `nmtui` on right-click
 - **Clipboard history**: `cliphist` + `wofi`
-- **Screenshots**: region select via `grim` + `slurp` to clipboard
+- **Screenshots**: region select via `grim` + `slurp` to clipboard, stored in `cliphist` history
 - **Lock Screen**: Beautifully configured `hyprlock` integration
 - **Custom Scripts**: Background alerts for low battery (15%, 10%, 5%) and dynamic Namaz (prayer) timings fetching
 - Pastel Catppuccin Macchiato/Mocha theme across the bar
@@ -59,3 +60,27 @@ cd ~/PROJECTS/Arch-Dotfiles
 If you are using an AI agent to help set up your system with these dotfiles, just copy and paste the prompt below to your AI assistant:
 
 > **"Please help me install and configure my Arch Linux system using the dotfiles from https://github.com/zoro-onepiece/Arch-Dotfiles. Start by cloning the repository and running the `install.sh` script to set up the symlinks. Then, review the 'Dependencies' section in the README and use `pacman` or my AUR helper (like `yay` or `paru`) to install all the required packages (including `hyprland`, `hyprlock`, `wayle`, `libnotify`, `python`, etc.). Ensure `wayle` and the custom battery/namaz scripts are set up correctly. Guide me through the entire setup step-by-step until my Hyprland environment is fully functional."**
+
+## Known Issues
+
+- **Browser flicker on screenshot**: The browser may briefly disappear for a second when taking a screenshot, primarily on Firefox. This is likely due to the `grim`/`slurp` interaction with the Wayland compositor and/or the `QT_QPA_PLATFORMTHEME, qt6ct` environment variable causing Qt repaint events. To mitigate, you can try:
+  - Removing or changing the `env = QT_QPA_PLATFORMTHEME, qt6ct` line in `hyprland.hyprland.conf`.
+  - Using `hyprctl dispatch region_screenshot` instead of the `grim`+`slurp` approach.
+  - Ensuring `swww-daemon` is not causing wallpaper reload flicker.
+
+- **Screenshots**: F10 - region screenshot (copies to clipboard + cliphist); F11 - show all windows overview; also supports `mnstsh` for annotations/arrows if installed
+
+## Gestures and Controls
+
+- **Three fingers up** (touchpad swipe up): Shows all windows/workspaces overview
+- **Three fingers swipe left/right**: Switch between workspaces (already enabled)
+- **Window resizing**: Resize arrows/hints depend on the window decorator theme. To customize resize appearance, modify the `decoration` section in `hyprland/hyprland.conf` or use a themed decorator that shows resize handles.
+
+## Known Issues
+
+- **Browser flicker on screenshot**: The browser may briefly disappear for a second when taking a screenshot, primarily on Firefox. This is likely due to the `grim`/`slurp` interaction with the Wayland compositor and/or the `QT_QPA_PLATFORMTHEME, qt6ct` environment variable causing Qt repaint events. To mitigate, you can try:
+  - Removing or changing the `env = QT_QPA_PLATFORMTHEME, qt6ct` line in `hyprland.hyprland.conf`.
+  - Using `hyprctl dispatch region_screenshot` instead of the `grim`+`slurp` approach.
+  - Ensuring `swww-daemon` is not causing wallpaper reload flicker.
+
+- **Screenshot drawing tool**: The screenshot script supports `mnstsh` for annotations/arrows if installed. Currently `mnstsh` is not installed in this environment. To enable drawing capability, install `mnstsh` (available via AUR/pacman/aur). Alternatively, the raw screenshot is always copied to clipboard and cliphist history.

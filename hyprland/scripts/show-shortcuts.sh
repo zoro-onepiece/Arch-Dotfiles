@@ -8,7 +8,9 @@ Super + C            : Close Window
 Super + V            : Clipboard History
 Super + F            : Fullscreen
 Super + L            : Lock Screen
-Super + Shift + S    : Screenshot region
+Super + F10          : Region screenshot
+Super + Tab or F11   : Window Overview (all windows)
+Super + Shift + S    : Region screenshot (copies to clipboard + cliphist)
 
 --- Window Management ---
 Super + Arrow Keys   : Move focus
