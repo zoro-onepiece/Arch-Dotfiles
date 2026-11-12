@@ -18,7 +18,7 @@ module-gap = 0.35
 monitor = "*"
 left = ["hyprland-workspaces"]
 center = ["clock"]
-right = ["cpu", "ram", "network", "bluetooth", "battery", "hyprsunset"]
+right = ["cpu", "ram", "network", "bluetooth", "volume", "battery", "hyprsunset"]
 
 [styling.palette]
 bg = "#181825"
@@ -67,6 +67,18 @@ icon-bg-color = "#89b4fa"
 label-color = "#89b4fa"
 button-bg-color = "#313244"
 right-click = "kitty -e bluetoothctl"
+
+[modules.volume]
+icon-show = true
+icon-bg-color = "#f38ba8"
+label-show = true
+label-color = "#f38ba8"
+button-bg-color = "#313244"
+left-click = "dropdown:audio"
+right-click = "kitty -e alsamixer"
+middle-click = "wayle audio output-mute"
+scroll-up = "wayle audio output-volume +5"
+scroll-down = "wayle audio output-volume -5"
 
 [modules.battery]
 icon-bg-color = "#cba6f7"

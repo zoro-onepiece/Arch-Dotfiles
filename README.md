@@ -9,6 +9,7 @@ Personal Hyprland (Wayland) setup for a Lenovo ThinkBook 14 G6 IRL running Arch 
 | `hyprland/` | Hyprland 0.56+ config in **Lua** (`hyprland.lua` is the source of truth), plus `hyprlock.conf` |
 | `hyprland/scripts/` | Custom scripts for low battery notifications and Namaz (Prayer) timings |
 | `wayle/` | [Wayle](https://github.com/wayle-rs/wayle) shell (status bar) config — workspaces, clock, cpu, ram, network, battery, night light toggle |
+| `kitty/` | Kitty terminal configuration with Catppuccin theme and audio alert |
 | `fastfetch/` | fastfetch config + ASCII art logo |
 | `install.sh` | Symlinks everything into `~/.config` |
 

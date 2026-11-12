@@ -37,5 +37,10 @@ echo "[LINK] $CONFDIR/hypr/hyprland.lua -> $DOTDIR/hyprland/hyprland.lua"
 echo "[LINK] $CONFDIR/hypr/hyprlock.conf -> $DOTDIR/hyprland/hyprlock.conf"
 echo "[LINK] $CONFDIR/hypr/scripts -> $DOTDIR/hyprland/scripts"
 
+# Kitty terminal configuration
+mkdir -p "$CONFDIR/kitty"
+ln -sfn "$DOTDIR/kitty/kitty.conf" "$CONFDIR/kitty/kitty.conf"
+echo "[LINK] $CONFDIR/kitty/kitty.conf -> $DOTDIR/kitty/kitty.conf"
+
 echo ""
 echo "Done. Symlinks installed from $DOTDIR to $CONFDIR"
